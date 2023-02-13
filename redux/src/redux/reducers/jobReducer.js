@@ -1,7 +1,7 @@
 import { GET_JOBS } from "../actions"
 
 const initialState = {
-    listing: []
+    listing: [],
 }
 
 const JobReducer = (state = initialState, action) =>{

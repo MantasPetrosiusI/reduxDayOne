@@ -12,7 +12,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { removeFromFavorites} from '../redux/actions'
 
 const Favourites = () => {
-  const favourites = (useSelector((state) => state.favourite))
+  const favourites = (useSelector((state) => state.favs.favs))
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -26,8 +26,7 @@ const Favourites = () => {
         </Col>
         <Col xs={10} className="mx-auto my-3">
           <ListGroup>
-            {favourites ? (
-              favourites.map((fav, i) => (
+            {favourites ? (favourites.map((fav, i) => (
                 <ListGroupItem key={i}>
                   <StarFill
                     className="mr-2"
@@ -37,12 +36,7 @@ const Favourites = () => {
                   />
                   <Link to={'/' + fav}>{fav}</Link>
                 </ListGroupItem>
-              ))
-            ) : (
-              <ListGroupItem>
-                No items in favorites list
-              </ListGroupItem>
-            )}
+              ))):(<h2>No favourites selected!</h2>)}
           </ListGroup>
         </Col>
       </Row>
