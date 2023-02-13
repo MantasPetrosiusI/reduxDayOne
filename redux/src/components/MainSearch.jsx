@@ -9,7 +9,7 @@ const MainSearch = () => {
 
   const navigate = useNavigate()
 
-  const baseEndpoint = 'https://strive-jobs-api.herokuapp.com/jobs?search='
+  const baseEndpoint = 'https://strive-benchmark.herokuapp.com/api/jobs?search='
 
   const handleChange = (e) => {
     setQuery(e.target.value)
@@ -19,7 +19,7 @@ const MainSearch = () => {
     e.preventDefault()
 
     try {
-      const response = await fetch(baseEndpoint + query + '&limit=20')
+      const response = await fetch(baseEndpoint + query + '&limit=10')
       if (response.ok) {
         const { data } = await response.json()
         setJobs(data)
