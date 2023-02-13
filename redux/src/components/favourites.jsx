@@ -9,9 +9,10 @@ import {
 import { StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { removeFromFavouritesAction } from '../redux/actions'
 
 const Favourites = () => {
-  const favourites = useSelector((state) => state.favourite.list)
+  const favourites = useSelector((state) => state.favourite)
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
@@ -25,20 +26,23 @@ const Favourites = () => {
         </Col>
         <Col xs={10} className="mx-auto my-3">
           <ListGroup>
-            {favourites.map((fav, i) => (
-              <ListGroupItem key={i}>
-                <StarFill
-                  className="mr-2"
-                  onClick={() =>
-                    dispatch({
-                      type: 'REMOVE_FROM_FAVOURITE',
-                      payload: fav,
-                    })
-                  }
-                />
-                <Link to={'/' + fav}>{fav}</Link>
+            {favourites ? (
+              favourites.map((fav, i) => (
+                <ListGroupItem key={i}>
+                  <StarFill
+                    className="mr-2"
+                    onClick={() =>
+                      dispatch(removeFromFavouritesAction(i))
+                    }
+                  />
+                  <Link to={'/' + fav}>{fav}</Link>
+                </ListGroupItem>
+              ))
+            ) : (
+              <ListGroupItem>
+                No items in favorites list
               </ListGroupItem>
-            ))}
+            )}
           </ListGroup>
         </Col>
       </Row>
