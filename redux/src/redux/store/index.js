@@ -1,6 +1,6 @@
 import {combineReducers, configureStore } from '@reduxjs/toolkit'
-import FavouriteReducer from '../reducers/favouriteReducer'
-import JobReducer from '../reducers/jobReducer'
+import FavouriteReducer from '../reducers/FavouriteReducer'
+import JobReducer from '../reducers/JobReducer'
 
 const store = configureStore({
   reducer: combineReducers({

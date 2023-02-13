@@ -16,22 +16,22 @@ export const removeFromFavouritesAction = (data) => {
   }
 }
 
-export const getJobsActionAsync = (query) => {
-  return async (dispatch) => {
-    const endpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
-    try {
-      let res = await fetch(endpoint + query + `&limit=10`);
-      if (res.ok) {
-        let allJobs = await res.json();
-        dispatch({
-          type: GET_JOBS,
-          payload: allJobs,
-        })
-      } else {
-        console.error('An error occurred while fetching jobs');
-      }
-    } catch (error) {
-      console.error(error);
+export const setSearchResults = (results) =>({
+  type: GET_JOBS,
+  payload: results,
+})
+
+export const fetchSearchResults = (query) =>{
+  return async dispatch =>{
+    try{
+      //const endpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+      //let res = await fetch(endpoint + query + `&limit=10`);
+      const res = await fetch(`/api/search?q=${query}`)
+      const results = await res.json();
+
+      dispatch(setSearchResults(results));
+    }catch(error) {
+      console.error(error)
     }
   }
 }

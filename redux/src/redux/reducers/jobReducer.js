@@ -1,16 +1,11 @@
 import { GET_JOBS } from "../actions"
 
-const initialState = {
-  jobs: [],
-}
+const initialState = []
 
 const JobReducer = (state = initialState, action) =>{
     switch(action.type){
         case GET_JOBS: 
-        return {
-            ...state,
-            jobs: [...state.jobs, action.payload]
-        }
+        return action.allJobs;
         default:
             return state;
     }
