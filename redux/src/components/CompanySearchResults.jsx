@@ -7,7 +7,7 @@ const CompanySearchResults = () => {
   const [jobs, setJobs] = useState([])
   const params = useParams()
 
-  const baseEndpoint = 'https://strive-benchmark.herokuapp.com/api/jobs?company='
+  const baseEndpoint = 'https://strive-benchmark.herokuapp.com/api/jobs?search='
 
   useEffect(() => {
     getJobs()
@@ -16,29 +16,30 @@ const CompanySearchResults = () => {
 
   const getJobs = async () => {
     try {
-      const response = await fetch(baseEndpoint + params.companyName)
+      const response = await fetch(baseEndpoint + params.companyName);
       if (response.ok) {
-        const { data } = await response.json()
-        setJobs(data)
+        const { data } = await response.json();
+        console.log(data);
+        setJobs(data);
       } else {
-        alert('Error fetching results')
+        alert("Error fetching results");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <Container>
       <Row>
         <Col>
-          {jobs.map((jobData) => (
-            <Job key={jobData._id} data={jobData} />
+          {jobs.map((jobData, index) => (
+            <Job key={jobData._id} data={jobData} index={index} />
           ))}
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default CompanySearchResults
+export default CompanySearchResults;
