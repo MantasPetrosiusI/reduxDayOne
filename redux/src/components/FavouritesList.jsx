@@ -2,12 +2,12 @@ import React from 'react';
 import { removeFromFavorites } from '../actions';
 import { connect } from 'react-redux';
 
-const FavoritesList = ({ favorites, removeFromFavouritesAction }) => (
+const FavoritesList = ({ favorites, removeFromFavorites }) => (
   <ul>
     {favorites.map(company => (
       <li key={company}>
         {company}
-        <button onClick={() => removeFromFavouritesAction(company)}>Remove</button>
+        <button onClick={() => removeFromFavorites(company)}>Remove</button>
       </li>
     ))}
   </ul>

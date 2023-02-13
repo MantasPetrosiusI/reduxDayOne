@@ -1,16 +1,17 @@
-export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
-export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES'
+export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES'
+export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES'
 export const GET_JOBS = 'GET_JOBS'
 
-export const addToFavouritesAction = company => ({
-  type: ADD_TO_FAVOURITES,
+export const addToFavorites = company => ({
+  type: ADD_TO_FAVORITES,
   payload: company
 });
 
-export const removeFromFavouritesAction = company => ({
-  type: REMOVE_FROM_FAVOURITES,
+export const removeFromFavorites = company => ({
+  type: REMOVE_FROM_FAVORITES,
   payload: company
 });
+
 
 
 export const setSearchResults = (results) =>({

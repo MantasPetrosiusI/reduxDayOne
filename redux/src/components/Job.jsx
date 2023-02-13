@@ -2,7 +2,7 @@ import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Star, StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToFavouritesAction, removeFromFavouritesAction } from '../redux/actions'
+import { addToFavorites, removeFromFavorites } from '../redux/actions'
 
 const Job = ({ data }) => {
   const favourite = useSelector((state) => state.favourite) || []
@@ -22,7 +22,7 @@ const Job = ({ data }) => {
             size={16}
             className="mr-2 my-auto"
             onClick={() =>
-              dispatch(removeFromFavouritesAction(data))
+              dispatch(removeFromFavorites(data))
             }
           />
         ) : (
@@ -31,7 +31,7 @@ const Job = ({ data }) => {
             size={16}
             className="mr-2 my-auto"
             onClick={() =>
-              dispatch(addToFavouritesAction(data))
+              dispatch(addToFavorites(data))
             }
           />
         )}
